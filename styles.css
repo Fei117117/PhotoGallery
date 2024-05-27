@@ -216,4 +216,8 @@ form button:hover {
   #collection-details p {
     font-size: 1em;
   }
+
+  #collection-images img {
+    width: 100%;
+  }
 }
