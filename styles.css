@@ -231,5 +231,6 @@ form button:hover {
 
   #collection-images img {
     width: 100%;
+    height: auto;
   }
 }
