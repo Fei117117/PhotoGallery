@@ -209,6 +209,14 @@ form button:hover {
 }
 
 @media (max-width: 768px) {
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  header p {
+    font-size: 1em;
+  }
+
   #collection-details h2 {
     font-size: 2em;
   }
@@ -217,7 +225,12 @@ form button:hover {
     font-size: 1em;
   }
 
+  #collection-images {
+    padding: 20px;
+  }
+
   #collection-images img {
-    width: 100%;
+    width: auto;
+    height: auto;
   }
 }
