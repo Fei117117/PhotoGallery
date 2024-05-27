@@ -191,10 +191,6 @@ form button:hover {
 }
 
 #collection-images {
-  display: flex;
-  justify-content: center; /* Horizontally center the images */
-  align-items: center; /* Vertically center the images */
-  flex-direction: column; /* Ensure images stack vertically */
   padding: 50px;
   background-color: #f8f8f8;
 }
