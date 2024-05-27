@@ -2,7 +2,7 @@
 
 Welcome to my Photography Portfolio website. This project showcases my photography work, including various collections and an about me section. The website is built with HTML, CSS, and JavaScript and deployed using GitHub Pages.
 
-## Demo
+## Site
 
 You can view the live website at: [https://fei117117.github.io/PhotoGallery/](https://fei117117.github.io/PhotoGallery/)
 
