@@ -1,11 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Portfolio images intersection observer
   const photos = document.querySelectorAll("#portfolio .photo");
 
-  const options = {
+  const photoObserverOptions = {
     threshold: 0.1,
   };
 
-  const observer = new IntersectionObserver(function (entries, observer) {
+  const photoObserver = new IntersectionObserver(function (entries, observer) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.style.opacity = 1;
@@ -13,21 +14,20 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.unobserve(entry.target);
       }
     });
-  }, options);
+  }, photoObserverOptions);
 
   photos.forEach((photo) => {
-    observer.observe(photo);
+    photoObserver.observe(photo);
   });
-});
 
-document.addEventListener("DOMContentLoaded", function () {
+  // Collection images intersection observer
   const images = document.querySelectorAll("#collection-images img");
 
-  const options = {
+  const imageObserverOptions = {
     threshold: 0.1,
   };
 
-  const observer = new IntersectionObserver(function (entries, observer) {
+  const imageObserver = new IntersectionObserver(function (entries, observer) {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         entry.target.style.opacity = 1;
@@ -35,12 +35,45 @@ document.addEventListener("DOMContentLoaded", function () {
         observer.unobserve(entry.target);
       }
     });
-  }, options);
+  }, imageObserverOptions);
 
   images.forEach((image) => {
-    observer.observe(image);
+    imageObserver.observe(image);
   });
+
+  // EmailJS form submission
+  const contactForm = document.getElementById("contactForm");
+  if (contactForm) {
+    contactForm.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Send form data using EmailJS
+      emailjs
+        .sendForm(
+          "service_fk0yh7b",
+          "template_1o6uzbs",
+          this,
+          "ccfYF3IgzdZyoYLCr"
+        )
+        .then(
+          function (response) {
+            console.log("SUCCESS!", response.status, response.text);
+            alert(
+              "Thank you for your message! We will get back to you shortly."
+            );
+            contactForm.reset();
+          },
+          function (error) {
+            console.log("FAILED...", error);
+            alert(
+              "An error occurred while sending your message. Please try again later."
+            );
+          }
+        );
+    });
+  }
 });
+
 function openNav() {
   document.getElementById("myNav").style.width = "100%";
 }
@@ -48,34 +81,3 @@ function openNav() {
 function closeNav() {
   document.getElementById("myNav").style.width = "0%";
 }
-
-document
-  .getElementById("contactForm")
-  .addEventListener("submit", function (event) {
-    event.preventDefault();
-
-    // Get form data
-    const form = document.getElementById("contactForm");
-
-    // Send form data using EmailJS
-    emailjs
-      .sendForm(
-        "service_fk0yh7b",
-        "template_1o6uzbs",
-        form,
-        "ccfYF3IgzdZyoYLCr"
-      )
-      .then(
-        function (response) {
-          console.log("SUCCESS!", response.status, response.text);
-          alert("Thank you for your message! We will get back to you shortly.");
-          form.reset();
-        },
-        function (error) {
-          console.log("FAILED...", error);
-          alert(
-            "An error occurred while sending your message. Please try again later."
-          );
-        }
-      );
-  });
